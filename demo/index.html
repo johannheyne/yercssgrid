@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YerCSSGrid Demo</title>
+		<meta charset="utf-8"/>
+		
+		<link rel="stylesheet" href="../css/yercssgrid.css" type="text/css" />
+		<style rel="stylesheet" type="text/css">
+			
+			body {
+				max-width: 1300px;
+				margin: 0;
+				font-family: Arial, sans-serif;
+			}
+			
+			/* YerCSSGrid is based on * box-sizing: border-box; */
+			body * {
+				box-sizing: border-box;
+			}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.wrap {
+				overflow: hidden;
+			}
+			
+			
+			.styletitle {
+				padding: 4px 10px;
+				text-align: center;
+				font-weight: bold;
+				margin-top: 20px;
+			}
+			
+			.styletext {
+				padding: 4px 10px;
+				text-align: center;
+			}
+			
+			.stylebox {
+				background: #ddd;
+				min-height: 20px;
+				margin-top: 9px;
+				margin-bottom: 9px;
+				padding: 4px 10px;
+				text-align: center;
+			}
+			
+		</style>
+		
+
+	</head>
+	<body>
+		
+		
+		<h1 class="styletitle">YerCSSGrid</h1>
+		
+		<div class="wrap">
+			
+			<!-- grid begin -->
+		
+			<div class="grid gap-20 mobile-500">
+			
+				<div class="styletitle col-100">
+					grid gap-20 mobile-500
+				</div>
+			
+				<div class="col-20 clear">
+					<div class="stylebox">col-20</div>
+				</div>
+			
+				<div class="col-80 ">
+					<div class="stylebox">col-80</div>
+				</div>
+			
+				<div class="col-40 clear">
+					<div class="stylebox">col-40</div>
+				</div>
+			
+				<div class="col-60">
+					<div class="stylebox">col-60</div>
+				</div>
+			
+				<div class="col-30 push-40 clear">
+					<div class="stylebox">col-30 push-40</div>
+				</div>
+			
+				<div class="col-30">
+					<div class="stylebox">col-30</div>
+				</div>
+			
+				<div class="col-60 push-40 clear">
+				
+					<div class="stylebox col-100">col-60 push-40</div>
+				
+					<!-- subgrid begin -->
+					<div class="grid gap-10 mobile-800"> 
+					
+						<div class="styletitle col-100">
+							col-100 grid gap-10 mobile-800
+						</div>
+					
+						<div class="col-20 clear">
+							<div class="stylebox">col-20</div>
+						</div>
+
+						<div class="col-80 ">
+							<div class="stylebox">col-80</div>
+						</div>
+
+						<div class="col-40 clear">
+							<div class="stylebox">col-40</div>
+						</div>
+
+						<div class="col-60">
+							<div class="stylebox">col-60</div>
+						</div>
+
+						<div class="col-30 push-40 clear">
+							<div class="stylebox">col-30 push-40</div>
+						</div>
+
+						<div class="col-30">
+							<div class="stylebox">col-30</div>
+						</div>
+					
+					</div>
+				
+					<!-- subgrid end -->
+				
+				</div>
+			
+			</div>
+		
+			<!-- grid end -->
+		
+			<!-- grid begin -->
+		
+			<div class="grid gap-20 mobile-500 colreverse">
+			
+				<div class="styletitle col-100">
+					grid gap-20 mobile-500 colreverse
+				</div>
+			
+				<div class="styletext col-100">
+					"colreverse" reverses the order of the html cols
+				</div>
+			
+				<div class="col-20 clear">
+					<div class="stylebox">col-20</div>
+				</div>
+			
+				<div class="col-80 ">
+					<div class="stylebox">col-80</div>
+				</div>
+			
+			</div>
+		
+			<!-- grid end -->
+		
+		</div>
+		
+	</body>
+</html>

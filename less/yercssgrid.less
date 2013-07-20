@@ -1,0 +1,123 @@
+// setup
+
+@grid-step: 10;
+
+@grid-gap-step: 5;
+@grid-gap-max: 20;
+
+@grid-use-push: yes;
+@grid-use-pull: yes;
+@grid-use-mobile: yes;
+
+@grid-mobile-step: 100;
+@grid-mobile-max: 800;
+
+
+// mixins
+
+.mix-grid-clear() {
+		
+  &:after {
+		
+    content: "";
+		display: table;
+		clear: both;
+  }
+}
+.mix-grid-border-box () {
+  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+// styles
+
+.grid {
+	> * {
+		float: left;
+		display: block;
+	}
+	.mix-grid-clear();
+}
+
+.colreverse {
+  > * {
+    float: right;
+  }
+}
+
+.loopGap (@index) when (@index > -1) {
+
+	(~".grid.gap-@{index}") {
+		margin-left: -@index / 2px;
+		margin-right: -@index / 2px;
+	}
+	(~".grid.gap-@{index}") {
+		> * {
+			padding-left: @index / 2px;
+			padding-right: @index / 2px;
+		}
+	}
+
+  .loopGap(@index - @grid-gap-step);
+}
+.loopGap (0) {}
+.loopGap (@grid-gap-max);
+
+.loopCol (@index) when (@index > 0) {
+
+  (~".col-@{index}") {
+    width: ~"@{index}%";
+  }
+
+  .loopCol(@index - @grid-step);
+}
+.loopCol (0) {}
+.loopCol (100);
+
+.loopPush (@index) when (@index > 0) and (@grid-use-push = yes) {
+
+  (~".push-@{index}") {
+    
+    margin-left: ~"@{index}%";
+  }
+
+  .loopPush(@index - @grid-step);
+}
+.loopPush (0) {}
+.loopPush (100);
+
+.loopPull (@index) when (@index > 0) and (@grid-use-pull = yes) {
+
+  (~".pull-@{index}") {
+    
+    margin-right: ~"-@{index}%";
+  }
+
+  .loopPull(@index - @grid-step);
+}
+.loopPull (0) {}
+.loopPull (100);
+
+.loopMobile (@index) when (@index > -1) and (@grid-use-mobile = yes) {
+	@media screen and (~"max-width: @{index}px") {
+		(~".mobile-@{index}") {
+			margin-left: 0;
+			margin-right: 0;
+			> * {
+				float: none;
+				width: 100%;
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+	.loopMobile(@index - @grid-mobile-step);
+
+}
+.loopMobile (0) {}
+.loopMobile (@grid-mobile-max);
