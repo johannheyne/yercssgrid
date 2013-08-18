@@ -9,13 +9,19 @@
 		<style rel="stylesheet" type="text/css">
 			
 			body {
-				margin: 0;
+				margin: 10px;
 				font-family: Arial, sans-serif;
 				overflow: hidden;
 			}
 			
+			@media screen and (min-width: 500px) {
+				body {
+					margin: 30px;
+				}
+			}
+			
 			/* YerCSSGrid is based on * box-sizing: border-box; */
-			body * {
+			* {
 				box-sizing: border-box;
 			}
 			
@@ -28,12 +34,11 @@
 				margin: auto;
 			}
 			
-			
 			.styletitle {
 				padding: 4px 10px;
 				text-align: center;
 				font-weight: bold;
-				margin-top: 20px;
+				padding-top: 10px;
 			}
 			
 			.styletext {
@@ -44,9 +49,35 @@
 			.stylebox {
 				background: #ddd;
 				min-height: 20px;
-				margin-bottom: 9px;
 				padding: 4px 10px;
 				text-align: center;
+			}
+			
+			.grid-border {
+				border-bottom: 1px solid #999;
+				border-left: 1px solid #999;
+				border-top: none;
+				border-right: none;
+				margin-bottom: 10px;
+			}
+			.grid-border > * {
+				border-right: 1px solid #999;
+				border-top: 1px solid #999;
+				border-bottom: 1px solid #999;
+				margin-bottom: -1px;
+			}
+			.grid-border > * > * {
+				margin-bottom: 0;
+			}
+			
+			.content-border > * > * {
+				border: 1px solid #999;
+				margin-bottom: 10px;
+			}
+			
+			.topline {
+				border-top: 1px solid #999;
+				padding-top: 20px;
 			}
 			
 		</style>
@@ -55,186 +86,71 @@
 	</head>
 	<body>
 		
-		
-			
-		<h1 class="styletitle">YerCSSGrid</h1>
-		
 		<div class="wrap">
 			
+			<h1 class="styletitle">YerCSSGrid</h1>
+
+			<p>The main structur of classe are {classtype}-{breackpoint}-{value}.</p>
+			
 			<section>
+				
+				<h2>Conventions</h2>
+				<p>Because of the technic to layout the gaps, we need overflow hidden on the body. And because of all is fluid and relative, we need border-box as box-sizing on all elements.</p>
+				<pre>body { overflow: hidden; }
+* { box-sizing: border-box; }
+				</code></pre>
 				
 				<h2>Using Columns</h2>
 				
-				<!-- grid begin -->
+				<h3 class="topline">Columns with gap</h3>
+				<p>In the following example we have a gap of 20 pixel starting on browser-width of 0. The cols starting at browser-width of 500 pixel.</p>
+				<pre><code>&#060;div class="grid gap-0-20"&#062;
+  &#060;div class="col-500-6"&#062;&#060;/div&#062;
+  &#060;div class="col-500-6"&#062;&#060;/div&#062;
+&#060;/div&#062;
+				</code></pre>
+				<div class="grid gap-0-20 content-border">
 				
-				<div class="grid gap-500-20">
-					
-					<div class="styletitle col-500-12">
-						grid gap-20 mobile-500
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
 					</div>
-					
-					<div class="col-500-3">
-						<div class="stylebox">col-3</div>
+		
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
 					</div>
 			
-					<div class="col-500-9 ">
-						<div class="stylebox">col-9</div>
-					</div>
-					
-					<div class="col-500-3 col-500-push-9">
-						<div class="stylebox">col-3 col-push-9</div>
-					</div>
-				
 				</div>
-
-				<div class="grid gap-500-10 gap-800-20">
+				
+				<h3 class="topline">Columns with gap</h3>
+				<p>In the following example we have no gap but the grid changes on two breakpoints.</p>
+				<pre><code>&#060;div class="grid"&#062;
+  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
+  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
+  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
+  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
+&#060;/div&#062;
+				</code></pre>
+				<div class="grid grid-border">
 							
 					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-3</div>
+						<div class="stylebox">col-500-6 col-800-3</div>
 					</div>
 					
 					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-3</div>
+						<div class="stylebox">col-500-6 col-800-3</div>
 					</div>
 					
 					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-3</div>
+						<div class="stylebox">col-500-6 col-800-3</div>
 					</div>
 					
 					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-3</div>
+						<div class="stylebox">col-500-6 col-800-3</div>
 					</div>
 				
 				</div>
-				
-				<div class="grid gap-20">
-						
-					<div class="col-500-4">
-						<div class="stylebox">col-4</div>
-					</div>
-			
-					<div class="col-500-4">
-						<div class="stylebox">col-4</div>
-					</div>
-					
-					<div class="col-500-4">
-						<div class="stylebox">col-4</div>
-					</div>
-					
-				</div>
-				
-				<!-- grid end -->
 				
 			</section>
-			
-			
-			<section>
-			
-				<h2>Using Percentage</h2>
-				
-				<!-- grid begin -->
-		
-				<div class="grid gap-20 mobile-500">
-			
-					<div class="styletitle perc-100">
-						grid gap-20 mobile-500
-					</div>
-			
-					<div class="perc-20 clear">
-						<div class="stylebox">perc-20</div>
-					</div>
-			
-					<div class="perc-80 ">
-						<div class="stylebox">perc-80</div>
-					</div>
-			
-					<div class="perc-40 clear">
-						<div class="stylebox">perc-40</div>
-					</div>
-			
-					<div class="perc-60">
-						<div class="stylebox">perc-60</div>
-					</div>
-			
-					<div class="perc-30 perc-push-40 clear">
-						<div class="stylebox">perc-30 perc-push-40</div>
-					</div>
-			
-					<div class="perc-30">
-						<div class="stylebox">perc-30</div>
-					</div>
-			
-					<div class="perc-60 perc-push-40 clear">
-				
-						<div class="stylebox perc-100">perc-60 perc-push-40</div>
-				
-						<!-- subgrid begin -->
-						<div class="grid gap-10 mobile-800"> 
-					
-							<div class="styletitle perc-100">
-								perc-100 grid gap-10 mobile-800
-							</div>
-					
-							<div class="perc-20 clear">
-								<div class="stylebox">perc-20</div>
-							</div>
-
-							<div class="perc-80 ">
-								<div class="stylebox">perc-80</div>
-							</div>
-
-							<div class="perc-40 clear">
-								<div class="stylebox">perc-40</div>
-							</div>
-
-							<div class="perc-60">
-								<div class="stylebox">perc-60</div>
-							</div>
-
-							<div class="perc-30 perc-push-40 clear">
-								<div class="stylebox">perc-30 perc-push-40</div>
-							</div>
-
-							<div class="perc-30">
-								<div class="stylebox">col-30</div>
-							</div>
-					
-						</div>
-				
-						<!-- subgrid end -->
-				
-					</div>
-			
-				</div>
-		
-				<!-- grid end -->
-		
-				<!-- grid begin -->
-		
-				<div class="grid gap-20 mobile-500 colreverse">
-			
-					<div class="styletitle perc-100">
-						grid gap-20 mobile-500 colreverse
-					</div>
-			
-					<div class="styletext perc-100">
-						"colreverse" reverses the order of the html cols
-					</div>
-			
-					<div class="perc-20 clear">
-						<div class="stylebox">perc-20</div>
-					</div>
-			
-					<div class="perc-80 ">
-						<div class="stylebox">perc-80</div>
-					</div>
-			
-				</div>
-		
-				<!-- grid end -->
-			
-			</section>
-			
 			
 		</div>
 		
