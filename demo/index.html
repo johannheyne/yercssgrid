@@ -3,6 +3,7 @@
 	<head>
 		<title>YerCSSGrid Demo</title>
 		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
 		<link rel="stylesheet" href="../css/yercssgrid.css" type="text/css" />
 		<style rel="stylesheet" type="text/css">
@@ -43,7 +44,6 @@
 			.stylebox {
 				background: #ddd;
 				min-height: 20px;
-				margin-top: 9px;
 				margin-bottom: 9px;
 				padding: 4px 10px;
 				text-align: center;
@@ -56,111 +56,186 @@
 	<body>
 		
 		
+			
 		<h1 class="styletitle">YerCSSGrid</h1>
 		
 		<div class="wrap">
 			
-			<!-- grid begin -->
-		
-			<div class="grid gap-20 mobile-500">
-			
-				<div class="styletitle col-100">
-					grid gap-20 mobile-500
-				</div>
-			
-				<div class="col-20 clear">
-					<div class="stylebox">col-20</div>
-				</div>
-			
-				<div class="col-80 ">
-					<div class="stylebox">col-80</div>
-				</div>
-			
-				<div class="col-40 clear">
-					<div class="stylebox">col-40</div>
-				</div>
-			
-				<div class="col-60">
-					<div class="stylebox">col-60</div>
-				</div>
-			
-				<div class="col-30 push-40 clear">
-					<div class="stylebox">col-30 push-40</div>
-				</div>
-			
-				<div class="col-30">
-					<div class="stylebox">col-30</div>
-				</div>
-			
-				<div class="col-60 push-40 clear">
+			<section>
 				
-					<div class="stylebox col-100">col-60 push-40</div>
+				<h2>Using Columns</h2>
 				
-					<!-- subgrid begin -->
-					<div class="grid gap-10 mobile-800"> 
+				<!-- grid begin -->
+				
+				<div class="grid gap-20 mobile-500">
 					
-						<div class="styletitle col-100">
-							col-100 grid gap-10 mobile-800
-						</div>
+					<div class="styletitle col-12">
+						grid gap-20 mobile-500
+					</div>
 					
-						<div class="col-20 clear">
-							<div class="stylebox">col-20</div>
-						</div>
-
-						<div class="col-80 ">
-							<div class="stylebox">col-80</div>
-						</div>
-
-						<div class="col-40 clear">
-							<div class="stylebox">col-40</div>
-						</div>
-
-						<div class="col-60">
-							<div class="stylebox">col-60</div>
-						</div>
-
-						<div class="col-30 push-40 clear">
-							<div class="stylebox">col-30 push-40</div>
-						</div>
-
-						<div class="col-30">
-							<div class="stylebox">col-30</div>
-						</div>
+					<div class="col-3">
+						<div class="stylebox">col-3</div>
+					</div>
+			
+					<div class="col-9 ">
+						<div class="stylebox">col-9</div>
+					</div>
 					
+					<div class="col-3 col-push-9">
+						<div class="stylebox">col-3 col-push-9</div>
 					</div>
 				
-					<!-- subgrid end -->
+				</div>
+
+				<div class="grid gap-20 mobile-700">
+							
+					<div class="col-3">
+						<div class="stylebox">col-3</div>
+					</div>
+					
+					<div class="col-3">
+						<div class="stylebox">col-3</div>
+					</div>
+					
+					<div class="col-3">
+						<div class="stylebox">col-3</div>
+					</div>
+					
+					<div class="col-3">
+						<div class="stylebox">col-3</div>
+					</div>
 				
 				</div>
+				
+				<div class="grid gap-20 mobile-700">
+						
+					<div class="col-4">
+						<div class="stylebox">col-4</div>
+					</div>
 			
-			</div>
-		
-			<!-- grid end -->
-		
-			<!-- grid begin -->
-		
-			<div class="grid gap-20 mobile-500 colreverse">
-			
-				<div class="styletitle col-100">
-					grid gap-20 mobile-500 colreverse
+					<div class="col-4">
+						<div class="stylebox">col-4</div>
+					</div>
+					
+					<div class="col-4">
+						<div class="stylebox">col-4</div>
+					</div>
+					
 				</div>
+				
+				<!-- grid end -->
+				
+			</section>
 			
-				<div class="styletext col-100">
-					"colreverse" reverses the order of the html cols
-				</div>
 			
-				<div class="col-20 clear">
-					<div class="stylebox">col-20</div>
-				</div>
+			<section>
 			
-				<div class="col-80 ">
-					<div class="stylebox">col-80</div>
-				</div>
-			
-			</div>
+				<h2>Using Percentage</h2>
+				
+				<!-- grid begin -->
 		
-			<!-- grid end -->
+				<div class="grid gap-20 mobile-500">
+			
+					<div class="styletitle perc-100">
+						grid gap-20 mobile-500
+					</div>
+			
+					<div class="perc-20 clear">
+						<div class="stylebox">perc-20</div>
+					</div>
+			
+					<div class="perc-80 ">
+						<div class="stylebox">perc-80</div>
+					</div>
+			
+					<div class="perc-40 clear">
+						<div class="stylebox">perc-40</div>
+					</div>
+			
+					<div class="perc-60">
+						<div class="stylebox">perc-60</div>
+					</div>
+			
+					<div class="perc-30 perc-push-40 clear">
+						<div class="stylebox">perc-30 perc-push-40</div>
+					</div>
+			
+					<div class="perc-30">
+						<div class="stylebox">perc-30</div>
+					</div>
+			
+					<div class="perc-60 perc-push-40 clear">
+				
+						<div class="stylebox perc-100">perc-60 perc-push-40</div>
+				
+						<!-- subgrid begin -->
+						<div class="grid gap-10 mobile-800"> 
+					
+							<div class="styletitle perc-100">
+								perc-100 grid gap-10 mobile-800
+							</div>
+					
+							<div class="perc-20 clear">
+								<div class="stylebox">perc-20</div>
+							</div>
+
+							<div class="perc-80 ">
+								<div class="stylebox">perc-80</div>
+							</div>
+
+							<div class="perc-40 clear">
+								<div class="stylebox">perc-40</div>
+							</div>
+
+							<div class="perc-60">
+								<div class="stylebox">perc-60</div>
+							</div>
+
+							<div class="perc-30 perc-push-40 clear">
+								<div class="stylebox">perc-30 perc-push-40</div>
+							</div>
+
+							<div class="perc-30">
+								<div class="stylebox">col-30</div>
+							</div>
+					
+						</div>
+				
+						<!-- subgrid end -->
+				
+					</div>
+			
+				</div>
 		
+				<!-- grid end -->
+		
+				<!-- grid begin -->
+		
+				<div class="grid gap-20 mobile-500 colreverse">
+			
+					<div class="styletitle perc-100">
+						grid gap-20 mobile-500 colreverse
+					</div>
+			
+					<div class="styletext perc-100">
+						"colreverse" reverses the order of the html cols
+					</div>
+			
+					<div class="perc-20 clear">
+						<div class="stylebox">perc-20</div>
+					</div>
+			
+					<div class="perc-80 ">
+						<div class="stylebox">perc-80</div>
+					</div>
+			
+				</div>
+		
+				<!-- grid end -->
+			
+			</section>
+			
+			
 		</div>
 		
 	</body>

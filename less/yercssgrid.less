@@ -1,12 +1,18 @@
 // setup
 
-@grid-step: 10;
+@grid-perc-step: 10;
+@grid-cols: 12;
 
 @grid-gap-step: 10;
 @grid-gap-max: 20;
 
-@grid-use-push: yes;
-@grid-use-pull: yes;
+@grid-use-perc: yes;
+@grid-use-perc-push: yes;
+@grid-use-perc-pull: yes;
+
+@grid-use-cols: yes;
+@grid-use-cols-push: yes;
+@grid-use-cols-pull: yes;
 @grid-use-mobile: yes;
 
 @grid-mobile-step: 100;
@@ -42,6 +48,8 @@
 	.mix-grid-clear();
 }
 
+
+
 .loopGap (@index) when (@index > -1) {
 	
 	.grid.gap-@{index} {
@@ -59,39 +67,83 @@
 .loopGap (0) {}
 .loopGap (@grid-gap-max);
 
+
+
 .colreverse {
   > * {
     float: right;
   }
 }
 
-.loopCol (@index) when (@index > 0) {
+
+
+.loopCols (@index) when (@index > 0) and (@grid-use-perc = yes) {
 	.col-@{index} {
+	
+		@x: 100 / @grid-cols * @index;
+		width: ~"@{x}%";
+	}
+	.loopCols(@index - 1);
+}
+.loopCols (0) {}
+.loopCols (@grid-cols);
+
+.loopColsPush (@index) when (@index > 0) and (@grid-use-cols-push = yes) {
+	.col-push-@{index} {
+		
+		@x: 100 / @grid-cols * @index;
+		
+		margin-left: ~"@{x}%";
+	}
+	.loopColsPush(@index - 1);
+}
+.loopColsPush (0) {}
+.loopColsPush (@grid-cols);
+
+.loopColsPull (@index) when (@index > 0) and (@grid-use-cols-pull = yes) {
+ 	.col-pull-@{index} {
+		
+		@x: 100 / @grid-cols * @index;
+		
+		margin-right: ~"@{x}%";
+	}
+
+	.loopColsPull(@index - 1);
+}
+.loopColsPull (0) {}
+.loopColsPull (@grid-cols);
+
+
+
+.loopPerc (@index) when (@index > 0) and (@grid-use-cols = yes) {
+	.perc-@{index} {
 		width: ~"@{index}%";
 	}
-	.loopCol(@index - @grid-step);
+	.loopPerc(@index - @grid-perc-step);
 }
-.loopCol (0) {}
-.loopCol (100);
+.loopPerc (0) {}
+.loopPerc (100);
 
-.loopPush (@index) when (@index > 0) and (@grid-use-push = yes) {
-	.push-@{index} {
+.loopPercPush (@index) when (@index > 0) and (@grid-use-perc-push = yes) {
+	.perc-push-@{index} {
 		margin-left: ~"@{index}%";
 	}
-	.loopPush(@index - @grid-step);
+	.loopPercPush(@index - @grid-perc-step);
 }
-.loopPush (0) {}
-.loopPush (100);
+.loopPercPush (0) {}
+.loopPercPush (100);
 
-.loopPull (@index) when (@index > 0) and (@grid-use-pull = yes) {
- 	.pull-@{index} {
+.loopPercPull (@index) when (@index > 0) and (@grid-use-perc-pull = yes) {
+ 	.perc-pull-@{index} {
 		margin-right: ~"-@{index}%";
 	}
 
-	.loopPull(@index - @grid-step);
+	.loopPercPull(@index - @grid-perc-step);
 }
-.loopPull (0) {}
-.loopPull (100);
+.loopPercPull (0) {}
+.loopPercPull (100);
+
+
 
 .loopMobile (@index) when (@index > -1) {
 	@media screen and (~"max-width: @{index}px") {
