@@ -6,82 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
 		<link rel="stylesheet" href="../css/yercssgrid.css" type="text/css" />
-		<style rel="stylesheet" type="text/css">
-			
-			body {
-				margin: 10px;
-				font-family: Arial, sans-serif;
-				overflow: hidden;
-			}
-			
-			@media screen and (min-width: 500px) {
-				body {
-					margin: 30px;
-				}
-			}
-			
-			/* YerCSSGrid is based on * box-sizing: border-box; */
-			* {
-				box-sizing: border-box;
-			}
-			
-			.clear {
-				clear: both;
-			}
-			
-			.wrap {
-				max-width: 1300px;
-				margin: auto;
-			}
-			
-			.styletitle {
-				padding: 4px 10px;
-				text-align: center;
-				font-weight: bold;
-				padding-top: 10px;
-			}
-			
-			.styletext {
-				padding: 4px 10px;
-				text-align: center;
-			}
-			
-			.stylebox {
-				background: #ddd;
-				min-height: 20px;
-				padding: 4px 10px;
-				text-align: center;
-			}
-			
-			.grid-border {
-				border-bottom: 1px solid #999;
-				border-left: 1px solid #999;
-				border-top: none;
-				border-right: none;
-				margin-bottom: 10px;
-			}
-			.grid-border > * {
-				border-right: 1px solid #999;
-				border-top: 1px solid #999;
-				border-bottom: 1px solid #999;
-				margin-bottom: -1px;
-			}
-			.grid-border > * > * {
-				margin-bottom: 0;
-			}
-			
-			.content-border > * > * {
-				border: 1px solid #999;
-				margin-bottom: 10px;
-			}
-			
-			.topline {
-				border-top: 1px solid #999;
-				padding-top: 20px;
-			}
-			
-		</style>
-		
+		<link rel="stylesheet" href="../css/demo.css" type="text/css" />
 		
 	</head>
 	<body>
@@ -93,67 +18,207 @@
 			<p>The main structur of classe are {classtype}-{breackpoint}-{value}.</p>
 			
 			<section>
-				
-				<h2>Conventions</h2>
-				<p>Because of the technic to layout the gaps, we need overflow hidden on the body. And because of all is fluid and relative, we need border-box as box-sizing on all elements.</p>
-				<pre>body { overflow: hidden; }
-* { box-sizing: border-box; }
-				</code></pre>
-				
-				<h2>Using Columns</h2>
-				
-				<h3 class="topline">Columns with gap</h3>
-				<p>In the following example we have a gap of 20 pixel starting on browser-width of 0. The cols starting at browser-width of 500 pixel.</p>
-				<pre><code>&#060;div class="grid gap-0-20"&#062;
-  &#060;div class="col-500-6"&#062;&#060;/div&#062;
-  &#060;div class="col-500-6"&#062;&#060;/div&#062;
-&#060;/div&#062;
-				</code></pre>
-				<div class="grid gap-0-20 content-border">
-				
-					<div class="col-500-6">
-						<div class="stylebox">col-500-6</div>
+
+				<h2>conventions</h2>
+				<p>Because of the technic to layout the gaps with padding and negative margins, we need overflow hidden on the body and overflow auto on the html element. Otherwise the grid element with negativ horizontal margins could protrude about the body and causes horizontal scrolling. And we need border-box as box-sizing on all elements.</p>
+
+				<div class="gridtec">
+					<div class="gridtec-body"><div class="gridtec-label">&lt;body&gt;</div></div>
+					<div class="gridtec-grid"><div class="gridtec-label">.grid .gap-0-40</div></div>
+					<div class="gridtec-col-1">
+						<div class="gridtec-label">.col-0-6</div>
+						<div class="gridtec-cont"><div class="gridtec-label">content</div></div>
 					</div>
-		
-					<div class="col-500-6">
-						<div class="stylebox">col-500-6</div>
+					<div class="gridtec-col-2">
+						<div class="gridtec-label">.col-0-6</div>
+						<div class="gridtec-cont"><div class="gridtec-label">content</div></div>
 					</div>
+				</div>
+
+				<pre class="code"><code>html { overflow: auto; }
+body { overflow: hidden; }
+* { box-sizing: border-box; }</code></pre>
+
+			</section>
 			
-				</div>
+			<section>
+			
+				<h2 class="topline">simple columns</h2>
 				
-				<h3 class="topline">Columns with gap</h3>
-				<p>In the following example we have no gap but the grid changes on two breakpoints.</p>
-				<pre><code>&#060;div class="grid"&#062;
-  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
-  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
-  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
-  &#060;div class="col-500-6 col-800-3"&#062;&#060;/div&#062;
-&#060;/div&#062;
-				</code></pre>
+				<p>In the following example we have just two columns starting at browser-width of 500 pixel.</p>
+				
+				<pre class="code"><code>&lt;div class="grid"&gt;
+  &lt;div class="col-500-6"&gt;&lt;/div&gt;
+  &lt;div class="col-500-6"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				
 				<div class="grid grid-border">
-							
-					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-500-6 col-800-3</div>
+
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
 					</div>
-					
-					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-500-6 col-800-3</div>
+
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
 					</div>
-					
-					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-500-6 col-800-3</div>
-					</div>
-					
-					<div class="col-500-6 col-800-3">
-						<div class="stylebox">col-500-6 col-800-3</div>
-					</div>
-				
+
 				</div>
+
+			</section>
+			
+			<section>
 				
+				<h2 class="topline">columns with gap</h2>
+				
+				<p>In the following example we have a gap of 20 pixel starting on browser-width of 0. The cols starting at browser-width of 500 pixel.</p>
+				
+				<pre class="code"><code>&lt;div class="grid gap-0-20"&gt;
+  &lt;div class="col-500-6"&gt;&lt;/div&gt;
+  &lt;div class="col-500-6"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				
+				<div class="grid gap-0-20 content-border">
+
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
+					</div>
+
+					<div class="col-500-6">
+						<div class="stylebox">col-500-6</div>
+					</div>
+
+				</div>
+
+			</section>
+			
+			<section>
+			
+				<h2 class="topline">columns depending on breakpoints</h2>
+				
+				<p>In the following example the columns behavior changes at two breakpoints, 500 and 800 pixels.</p>
+				
+				<pre class="code"><code>&lt;div class="grid"&gt;
+  &lt;div class="col-500-6 col-800-3"&gt;&lt;/div&gt;
+  &lt;div class="col-500-6 col-800-3"&gt;&lt;/div&gt;
+  &lt;div class="col-500-6 col-800-3"&gt;&lt;/div&gt;
+  &lt;div class="col-500-6 col-800-3"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				
+				<div class="grid grid-border">
+
+					<div class="col-500-6 col-800-3">
+						<div class="stylebox">col-500-6 col-800-3</div>
+					</div>
+
+					<div class="col-500-6 col-800-3">
+						<div class="stylebox">col-500-6 col-800-3</div>
+					</div>
+
+					<div class="col-500-6 col-800-3">
+						<div class="stylebox">col-500-6 col-800-3</div>
+					</div>
+
+					<div class="col-500-6 col-800-3">
+						<div class="stylebox">col-500-6 col-800-3</div>
+					</div>
+
+				</div>
+
+			</section>
+			
+			<section>
+
+				<h2 class="topline">pushing columns</h2>
+				
+				<p>We center a single column depending on two breakpoints ( 800, 1000 ) Each breakpoint has a different column width and push behavior.</p>
+				
+				<pre class="code"><code>&lt;div class="grid"&gt;
+  &lt;div class="col-800-10 push-800-1 col-1000-8 push-1000-2"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				
+				<div class="grid content-border">
+
+					<div class="col-800-10 push-800-1 col-1000-8 push-1000-2">
+						<div class="stylebox">col-800-10 push-800-1 col-1000-8 push-1000-2</div>
+					</div>
+
+				</div>
+
+			</section>
+			
+			<section>
+
+				<h2 class="topline">nesting grids</h2>
+				
+				<p>We can nest grids.</p>
+
+				<pre class="code"><code>&lt;div class="grid gap-0-20"&gt;
+  &lt;div class="col-700-3"&gt;&lt;/div&gt;
+  &lt;div class="col-700-9"&gt;
+  
+    &lt;div class="grid"&gt;
+      &lt;div class="col-900-6"&gt;&lt;/div&gt;
+      &lt;div class="col-900-6"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+				<div class="grid gap-0-20 content-border">
+
+					<div class="col-700-3">
+						<div class="stylebox">col-700-3</div>
+					</div>
+
+					<div class="col-700-9">
+
+						<div class="grid grid-border">
+							<div class="col-900-8">
+								<div class="stylebox">col-900-8</div>
+							</div>
+
+							<div class="col-900-4">
+								<div class="stylebox">col-900-4</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+			
+			<section>
+				
+				<h2 class="topline">reversing columns order</h2>
+				
+				<p>We can reversing the displaying order of colums.</p>
+				
+				<pre class="code"><code>&lt;div class="grid gap-0-20 colreverse"&gt;
+  &lt;div class="col-0-4"&gt;1&lt;/div&gt;
+  &lt;div class="col-0-4"&gt;2&lt;/div&gt;
+  &lt;div class="col-0-4"&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+				
+				<div class="grid gap-0-20 colreverse content-border">
+					<div class="col-0-4">
+						<div class="stylebox">1</div>
+					</div>
+
+					<div class="col-0-4">
+						<div class="stylebox">2</div>
+					</div>
+
+					<div class="col-0-4">
+						<div class="stylebox">3</div>
+					</div>
+				</div>
+
 			</section>
 			
 		</div>
-		
+
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js?ver=latest"></script>
 		<script>
 			
