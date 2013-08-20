@@ -91,7 +91,7 @@
 	.loopCols (@grid-cols);
 
 	.loopColsPush (@index) when (@index > 0) and (@grid-use-cols-push = yes) {
-		.col-@{breackpoint}-push-@{index} {
+		.push-@{breackpoint}-@{index} {
 	
 			@x: 100 / @grid-cols * @index;
 	
@@ -103,7 +103,7 @@
 	.loopColsPush (@grid-cols);
 
 	.loopColsPull (@index) when (@index > 0) and (@grid-use-cols-pull = yes) {
-	 	.col-@{breackpoint}-pull-@{index} {
+	 	.pull-@{breackpoint}-@{index} {
 	
 			@x: 100 / @grid-cols * @index;
 	
