@@ -1,3 +1,5 @@
 h1. YerCSSGrid
 
 a fluid responsive object oriented css grid that is based on LESS.
+
+<a href="http://demo.johannheyne.de/yercssgrid/demo/" target="_blank">docs and demopage</a>
