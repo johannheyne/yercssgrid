@@ -217,6 +217,31 @@ body { overflow: hidden; }
 
 			</section>
 			
+			<section>
+				
+				<h2 class="topline">setup</h2>
+				
+				<p>In the file yercssgrid.less we have some variables to setup the grid.</p>
+				
+				<h3>@grid-use-cols @grid-use-perc</h3>
+				<p>The grid is made of columns with percentage width values. Therefore it is possible to use grid-cols and/or strait percentage values to define the width of a col. These variables define, what should be possible.</p>
+				<pre class="code"><code>@grid-use-cols: yes;
+@grid-use-perc: no;</code></pre>
+
+				<h3>@grid-cols</h3>
+				<p>Defined the number of grid columns.</p>
+				<pre class="code"><code>@grid-cols: 12;</code></pre>
+				
+			</section>
+			
+			<section>
+				
+				<h2 class="topline">browser support</h2>
+				
+				<p>In the latest Safari for Mac, its rendering engine has a little trouble with long decimal places like 33,33333333%. This means that sometimes the rightmost column is of one pixel distance to the right edge. There is still nothing easy  I can do to fix this without stupid conventions.</p>
+				
+			</section>
+			
 		</div>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js?ver=latest"></script>
