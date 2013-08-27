@@ -20,12 +20,12 @@
 @grid-use-perc-pull: no;
 @grid-perc-step: 10;
 
-@grid-use-text-align-inherit: no;
+@grid-use-text-align-inherit: yes;
 
-@grid-use-space: no;
-@grid-space-step: 10;
-@grid-space-min: 0;
-@grid-space-max: 30;
+@grid-use-top-bottom: yes;
+@grid-top-bottom-step: 10;
+@grid-top-bottom-min: 0;
+@grid-top-bottom-max: 30;
 
 
 
@@ -160,17 +160,17 @@
 	.loopTextAlignInherit ();
 	
 	
-	.loopSpace (@index) when (@index > -1) and (@grid-use-space = yes) {
-		.space-top-@{breackpoint}-@{index} {
+	.loopSpace (@index) when (@index > -1) and (@grid-use-top-bottom = yes) {
+		.top-@{breackpoint}-@{index} {
 			margin-top: ~"@{index}px";
 		}
-		.space-bottom-@{breackpoint}-@{index} {
+		.bottom-@{breackpoint}-@{index} {
 			margin-bottom: ~"@{index}px";
 		}
-		.loopSpace(@index - @grid-space-step);
+		.loopSpace(@index - @grid-top-bottom-step);
 	}
-	.loopSpace (@grid-space-min) {}
-	.loopSpace (@grid-space-max);
+	.loopSpace (@grid-top-bottom-min) {}
+	.loopSpace (@grid-top-bottom-max);
 }
 
 .loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {

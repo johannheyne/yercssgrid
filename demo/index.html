@@ -219,6 +219,52 @@ body { overflow: hidden; }
 			
 			<section>
 				
+				<h2 class="topline">text-align inherit</h2>
+				
+				<p>On very small screens it is sometimes usefull to have centered content. With "text-align-inherit-{breakpoint}" we can get the centered text-alignment of by setting text-align to inherit on a breakpoint.</p>
+				
+				<pre class="code">&#060;div class="grid gap-0-20"&#062;
+  &#060;div style="text-align: center;" class="col-600-6 text-align-inherit-600"&#062;1&#060;/div&#062;
+  &#060;div style="text-align: center;" class="col-600-6 text-align-inherit-600"&#062;2&#060;/div&#062;
+&#060;/div&#062;</code></pre>
+				
+				<div class="grid gap-0-20 content-border">
+					<div class="col-600-6">
+						<div class="stylebox text-align-inherit-600">1</div>
+					</div>
+
+					<div class="col-600-6">
+						<div class="stylebox text-align-inherit-600">2</div>
+					</div>
+				</div>
+
+			</section>
+			
+			<section>
+				
+				<h2 class="topline">top & bottom</h2>
+				
+				<p>When columns need to change their margin-top or margin-bottom at breakpoints.</p>
+				
+				<pre class="code">&#060;div class="grid gap-0-20"&#062;
+  &#060;div class="col-600-6"&#062;1&#060;/div&#062;
+  &#060;div class="col-600-6 top-0-30 top-600-0"&#062;2&#060;/div&#062;
+&#060;/div&#062;</code></pre>
+				
+				<div class="grid gap-0-20 content-border">
+					<div class="col-600-6">
+						<div class="stylebox">1</div>
+					</div>
+
+					<div class="col-600-6 top-0-30 top-600-0">
+						<div class="stylebox">2</div>
+					</div>
+				</div>
+
+			</section>
+			
+			<section>
+				
 				<h2 class="topline">setup</h2>
 				
 				<p>In the file yercssgrid.less we have some variables to setup the grid.</p>

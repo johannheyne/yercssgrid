@@ -169,3 +169,7 @@ body {
   border: 1px solid #ffb8b8;
   background: #ffebeb;
 }
+
+.text-align-center {
+	text-align: center;
+}
