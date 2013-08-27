@@ -1,6 +1,5 @@
 // Setup
 
-
 @grid-use-breackpoint-0: yes;
 @grid-use-breackpoints: yes;
 @grid-breackpoint-step: 100;
@@ -22,6 +21,13 @@
 @grid-perc-step: 10;
 
 @grid-use-text-align-inherit: no;
+
+@grid-use-space: no;
+@grid-space-step: 10;
+@grid-space-min: 0;
+@grid-space-max: 30;
+
+
 
 
 
@@ -59,6 +65,8 @@
     float: right;
   }
 }
+
+
 
 .loopEachBreakpoint( @breackpoint ) {
 	
@@ -150,6 +158,19 @@
 		}
 	}
 	.loopTextAlignInherit ();
+	
+	
+	.loopSpace (@index) when (@index > -1) and (@grid-use-space = yes) {
+		.space-top-@{breackpoint}-@{index} {
+			margin-top: ~"@{index}px";
+		}
+		.space-bottom-@{breackpoint}-@{index} {
+			margin-bottom: ~"@{index}px";
+		}
+		.loopSpace(@index - @grid-space-step);
+	}
+	.loopSpace (@grid-space-min) {}
+	.loopSpace (@grid-space-max);
 }
 
 .loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {
