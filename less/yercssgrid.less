@@ -21,6 +21,7 @@
 @grid-use-perc-pull: no;
 @grid-perc-step: 10;
 
+@grid-use-text-align-inherit: no;
 
 
 
@@ -142,6 +143,13 @@
 	}
 	.loopPercPull (0) {}
 	.loopPercPull (100);
+	
+	.loopTextAlignInherit () when ( @grid-use-text-align-inherit = yes ) {
+		.text-align-inherit-@{breackpoint} {
+			text-align: inherit !important;
+		}
+	}
+	.loopTextAlignInherit ();
 }
 
 .loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {
