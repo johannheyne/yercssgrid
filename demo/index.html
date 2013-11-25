@@ -14,6 +14,7 @@
 		<div class="wrap">
 			
 			<h1 class="styletitle">YerCSSGrid</h1>
+			<p class="h1-subline nowrap">Version 2 <a class="center" href="#changelog">Changelog</a></p>
 			<a href="https://github.com/johannheyne/yercssgrid">YerCSSGrid on GitHub</a>
 			
 			<section>
@@ -23,8 +24,6 @@
 				
 				<p>You can define the number of columns, different gap-widths and breakpoints. All together this parameters are combined in the following principle: .{classtype}-{breackpoint}-{value}. There are some more options you can find in the settings and at this demo page.</p>
 				
-				
-
 			</section>
 			
 			<section>
@@ -288,6 +287,36 @@ body { overflow: hidden; }
 				<p>Defined the number of grid columns.</p>
 				<pre class="code"><code>@grid-cols: 12;</code></pre>
 				
+				<p>All variables:</p>
+				
+				<pre class="code"><code>@grid-use-breackpoint-0: yes;
+@grid-use-breackpoints: yes;
+@grid-breackpoint-step: 100;
+@grid-breackpoint-min: 300;
+@grid-breackpoint-max: 1000;
+
+@grid-use-gaps: yes;
+@grid-gap-step: 10;
+@grid-gap-max: 20;
+
+@grid-use-cols: yes;
+@grid-use-cols-push: yes;
+@grid-use-cols-pull: yes;
+@grid-cols: 12;
+
+@grid-use-perc: no;
+@grid-use-perc-push: no;
+@grid-use-perc-pull: no;
+@grid-perc-step: 10;
+
+@grid-use-text-align-inherit: yes;
+
+@grid-use-top-bottom: yes;
+@grid-top-bottom-step: 10;
+@grid-top-bottom-min: 0;
+@grid-top-bottom-max: 30;
+				</code></pre>
+				
 			</section>
 			
 			<section>
@@ -296,6 +325,17 @@ body { overflow: hidden; }
 				
 				<p>In the latest Safari for Mac, its rendering engine has a little trouble with long decimal places like 33,33333333%. This means that sometimes the rightmost column is of one pixel distance to the right edge. There is still nothing easy  I can do to fix this without stupid conventions.</p>
 				
+			</section>
+			
+			<section id="changelog">
+				
+				<h2 class="topline">Changelog</h2>
+				
+				<h3>Version 2 <time>2013.11.25</time></h3>
+				
+				<ol>
+					<li>In version 1, the cols were layouted with float. Here, however, there were problems with the layout of cols over several rows with different cols-heights. Therefore, the cols are now layouted using inline-block.</li>
+				</ol>
 			</section>
 			
 		</div>
