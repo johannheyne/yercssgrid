@@ -1,191 +1,192 @@
-// Setup
+// YerCSSGrid ( Version 2 )
 
-@grid-use-breackpoint-0: yes;
-@grid-use-breackpoints: yes;
-@grid-breackpoint-step: 100;
-@grid-breackpoint-min: 300;
-@grid-breackpoint-max: 1000;
+// SETUP {
 
-@grid-use-gaps: yes;
-@grid-gap-step: 10;
-@grid-gap-max: 20;
+	@grid-use-breackpoint-0: yes;
+	@grid-use-breackpoints: yes;
+	@grid-breackpoint-step: 100;
+	@grid-breackpoint-min: 300;
+	@grid-breackpoint-max: 1000;
 
-@grid-use-cols: yes;
-@grid-use-cols-push: yes;
-@grid-use-cols-pull: yes;
-@grid-cols: 12;
+	@grid-use-gaps: yes;
+	@grid-gap-step: 10;
+	@grid-gap-max: 20;
 
-@grid-use-perc: no;
-@grid-use-perc-push: no;
-@grid-use-perc-pull: no;
-@grid-perc-step: 10;
+	@grid-use-cols: yes;
+	@grid-use-cols-push: yes;
+	@grid-use-cols-pull: yes;
+	@grid-cols: 12;
 
-@grid-use-text-align-inherit: yes;
+	@grid-use-perc: no;
+	@grid-use-perc-push: no;
+	@grid-use-perc-pull: no;
+	@grid-perc-step: 10;
 
-@grid-use-top-bottom: yes;
-@grid-top-bottom-step: 10;
-@grid-top-bottom-min: 0;
-@grid-top-bottom-max: 30;
+	@grid-use-text-align-inherit: yes;
 
+	@grid-use-top-bottom: yes;
+	@grid-top-bottom-step: 10;
+	@grid-top-bottom-min: 0;
+	@grid-top-bottom-max: 30;
 
+// SETUP }
 
+// GENERATOR {
 
-
-
-// Generator
-
-.mix-grid-clear() {
+	.mix-grid-clear() {
 		
-  &:after {
+	  &:after {
 		
-    content: "";
-		display: table;
-		clear: both;
-  }
-}
-.mix-grid-border-box () {
-  
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.grid {
-	
-	> * {
-		float: left;
-		display: block;
-		width: 100%;
+	    content: "";
+			display: table;
+			clear: both;
+	  }
 	}
-	.mix-grid-clear();
-}
+	.mix-grid-border-box () {
+  
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
 
-.colreverse {
-  > * {
-    float: right;
-  }
-}
-
-
-
-.loopEachBreakpoint( @breackpoint ) {
-	
-	.loopGap (@index) when (@index > -1)  and ( @grid-use-gaps = yes ){
-
-		.grid.gap-@{breackpoint}-@{index} {
-			margin-left: -@index / 2px;
-			margin-right: -@index / 2px;
+	.grid {
+		> * {
+			display: inline-block;
+			width: 100%;
+			vertical-align: top;
 		}
-		.grid.gap-@{breackpoint}-@{index} {
-			> * {
-				padding-left: @index / 2px;
-				padding-right: @index / 2px;
+		.mix-grid-clear();
+	}
+
+	.grid.colreverse {
+	    direction: rtl;
+		> * {
+			direction: ltr;
+			text-align: left;
+		}
+	}
+
+
+	.loopEachBreakpoint( @breackpoint ) {
+	
+		.loopGap (@index) when (@index > -1)  and ( @grid-use-gaps = yes ){
+
+			.grid.gap-@{breackpoint}-@{index} {
+				margin-left: -@index / 2px;
+				margin-right: -@index / 2px;
+			}
+			.grid.gap-@{breackpoint}-@{index} {
+				> * {
+					padding-left: @index / 2px;
+					padding-right: @index / 2px;
+				}
+			}
+			.loopGap(@index - @grid-gap-step);
+		}
+		.loopGap (0) {}
+		.loopGap (@grid-gap-max);
+
+	
+		.loopCols (@index) when (@index > 0) and (@grid-use-cols = yes) {
+			.col-@{breackpoint}-@{index} {
+
+				@x: 100 / @grid-cols * @index;
+				width: ~"@{x}%";
+			}
+			.loopCols(@index - 1);
+		}
+		.loopCols (0) {}
+		.loopCols (@grid-cols);
+
+		.loopColsPush (@index) when (@index > 0) and (@grid-use-cols-push = yes) {
+			.push-@{breackpoint}-@{index} {
+	
+				@x: 100 / @grid-cols * @index;
+	
+				margin-left: ~"@{x}%";
+			}
+			.loopColsPush(@index - 1);
+		}
+		.loopColsPush (0) {}
+		.loopColsPush (@grid-cols);
+
+		.loopColsPull (@index) when (@index > 0) and (@grid-use-cols-pull = yes) {
+		 	.pull-@{breackpoint}-@{index} {
+	
+				@x: 100 / @grid-cols * @index;
+	
+				margin-right: ~"@{x}%";
+			}
+
+			.loopColsPull(@index - 1);
+		}
+		.loopColsPull (0) {}
+		.loopColsPull (@grid-cols);
+
+		.loopPerc (@index) when (@index > 0) and (@grid-use-perc = yes) {
+			.perc-@{breackpoint}-@{index} {
+				width: ~"@{index}%";
+			}
+			.loopPerc(@index - @grid-perc-step);
+		}
+		.loopPerc (0) {}
+		.loopPerc (100);
+
+		.loopPercPush (@index) when (@index > 0) and (@grid-use-perc-push = yes) {
+			.perc-@{breackpoint}-push-@{index} {
+				margin-left: ~"@{index}%";
+			}
+			.loopPercPush(@index - @grid-perc-step);
+		}
+		.loopPercPush (0) {}
+		.loopPercPush (100);
+
+		.loopPercPull (@index) when (@index > 0) and (@grid-use-perc-pull = yes) {
+		 	.perc-@{breackpoint}-pull-@{index} {
+				margin-right: ~"-@{index}%";
+			}
+
+			.loopPercPull(@index - @grid-perc-step);
+		}
+		.loopPercPull (0) {}
+		.loopPercPull (100);
+	
+		.loopTextAlignInherit () when ( @grid-use-text-align-inherit = yes ) {
+			.text-align-inherit-@{breackpoint} {
+				text-align: inherit !important;
 			}
 		}
-		.loopGap(@index - @grid-gap-step);
-	}
-	.loopGap (0) {}
-	.loopGap (@grid-gap-max);
-
+		.loopTextAlignInherit ();
 	
-	.loopCols (@index) when (@index > 0) and (@grid-use-cols = yes) {
-		.col-@{breackpoint}-@{index} {
-
-			@x: 100 / @grid-cols * @index;
-			width: ~"@{x}%";
+	
+		.loopSpace (@index) when (@index > -1) and (@grid-use-top-bottom = yes) {
+			.top-@{breackpoint}-@{index} {
+				margin-top: ~"@{index}px";
+			}
+			.bottom-@{breackpoint}-@{index} {
+				margin-bottom: ~"@{index}px";
+			}
+			.loopSpace(@index - @grid-top-bottom-step);
 		}
-		.loopCols(@index - 1);
+		.loopSpace (@grid-top-bottom-min) {}
+		.loopSpace (@grid-top-bottom-max);
 	}
-	.loopCols (0) {}
-	.loopCols (@grid-cols);
 
-	.loopColsPush (@index) when (@index > 0) and (@grid-use-cols-push = yes) {
-		.push-@{breackpoint}-@{index} {
+	.loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {
 	
-			@x: 100 / @grid-cols * @index;
+		.loopEachBreakpoint( 0 );
+	}
+	.loopEachBreakpointBase();
+
+	.loopBreakpoint (@breackpoint) when (@breackpoint < ( @grid-breackpoint-max + 1 ) ) and (@grid-use-breackpoints = yes) {
 	
-			margin-left: ~"@{x}%";
+		@media screen and (~"min-width: @{breackpoint}px") {
+	
+			.loopEachBreakpoint( @breackpoint );
 		}
-		.loopColsPush(@index - 1);
+		.loopBreakpoint(@breackpoint + @grid-breackpoint-step);
 	}
-	.loopColsPush (0) {}
-	.loopColsPush (@grid-cols);
+	.loopBreakpoint (@grid-breackpoint-max) {}
+	.loopBreakpoint (@grid-breackpoint-min);
 
-	.loopColsPull (@index) when (@index > 0) and (@grid-use-cols-pull = yes) {
-	 	.pull-@{breackpoint}-@{index} {
-	
-			@x: 100 / @grid-cols * @index;
-	
-			margin-right: ~"@{x}%";
-		}
-
-		.loopColsPull(@index - 1);
-	}
-	.loopColsPull (0) {}
-	.loopColsPull (@grid-cols);
-
-	.loopPerc (@index) when (@index > 0) and (@grid-use-perc = yes) {
-		.perc-@{breackpoint}-@{index} {
-			width: ~"@{index}%";
-		}
-		.loopPerc(@index - @grid-perc-step);
-	}
-	.loopPerc (0) {}
-	.loopPerc (100);
-
-	.loopPercPush (@index) when (@index > 0) and (@grid-use-perc-push = yes) {
-		.perc-@{breackpoint}-push-@{index} {
-			margin-left: ~"@{index}%";
-		}
-		.loopPercPush(@index - @grid-perc-step);
-	}
-	.loopPercPush (0) {}
-	.loopPercPush (100);
-
-	.loopPercPull (@index) when (@index > 0) and (@grid-use-perc-pull = yes) {
-	 	.perc-@{breackpoint}-pull-@{index} {
-			margin-right: ~"-@{index}%";
-		}
-
-		.loopPercPull(@index - @grid-perc-step);
-	}
-	.loopPercPull (0) {}
-	.loopPercPull (100);
-	
-	.loopTextAlignInherit () when ( @grid-use-text-align-inherit = yes ) {
-		.text-align-inherit-@{breackpoint} {
-			text-align: inherit !important;
-		}
-	}
-	.loopTextAlignInherit ();
-	
-	
-	.loopSpace (@index) when (@index > -1) and (@grid-use-top-bottom = yes) {
-		.top-@{breackpoint}-@{index} {
-			margin-top: ~"@{index}px";
-		}
-		.bottom-@{breackpoint}-@{index} {
-			margin-bottom: ~"@{index}px";
-		}
-		.loopSpace(@index - @grid-top-bottom-step);
-	}
-	.loopSpace (@grid-top-bottom-min) {}
-	.loopSpace (@grid-top-bottom-max);
-}
-
-.loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {
-	
-	.loopEachBreakpoint( 0 );
-}
-.loopEachBreakpointBase();
-
-.loopBreakpoint (@breackpoint) when (@breackpoint < ( @grid-breackpoint-max + 1 ) ) and (@grid-use-breackpoints = yes) {
-	
-	@media screen and (~"min-width: @{breackpoint}px") {
-	
-		.loopEachBreakpoint( @breackpoint );
-	}
-	.loopBreakpoint(@breackpoint + @grid-breackpoint-step);
-}
-.loopBreakpoint (@grid-breackpoint-max) {}
-.loopBreakpoint (@grid-breackpoint-min);
+// GENERATOR }
