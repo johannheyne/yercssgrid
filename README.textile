@@ -1,5 +1,7 @@
 h1. YerCSSGrid
 
-a fluid responsive object oriented css grid that supports SASS and LESS.
+Version 1.1
+
+A fluid responsive object oriented css grid that supports SASS and LESS.
 
 <a href="http://demo.johannheyne.de/yercssgrid/demo/" target="_blank">docs and demopage</a>
