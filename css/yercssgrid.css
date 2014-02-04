@@ -1,15 +1,23 @@
+.grid {
+  font-size: 0;
+}
 .grid > * {
-  float: left;
-  display: block;
+  display: inline-block;
   width: 100%;
+  vertical-align: top;
+  font-size: 16px;
 }
 .grid:after {
   content: "";
   display: table;
   clear: both;
 }
-.colreverse > * {
-  float: right;
+.grid.colreverse {
+  direction: rtl;
+}
+.grid.colreverse > * {
+  direction: ltr;
+  text-align: left;
 }
 .grid.gap-0-20 {
   margin-left: -10px;
@@ -170,6 +178,12 @@
 .bottom-0-0 {
   margin-bottom: 0px;
 }
+.hide-0 {
+  display: none;
+}
+.show-0 {
+  display: inline-block;
+}
 @media screen and (min-width: 300px) {
   .grid.gap-300-20 {
     margin-left: -10px;
@@ -329,6 +343,12 @@
   }
   .bottom-300-0 {
     margin-bottom: 0px;
+  }
+  .hide-300 {
+    display: none;
+  }
+  .show-300 {
+    display: inline-block;
   }
 }
 @media screen and (min-width: 400px) {
@@ -491,6 +511,12 @@
   .bottom-400-0 {
     margin-bottom: 0px;
   }
+  .hide-400 {
+    display: none;
+  }
+  .show-400 {
+    display: inline-block;
+  }
 }
 @media screen and (min-width: 500px) {
   .grid.gap-500-20 {
@@ -651,6 +677,12 @@
   }
   .bottom-500-0 {
     margin-bottom: 0px;
+  }
+  .hide-500 {
+    display: none;
+  }
+  .show-500 {
+    display: inline-block;
   }
 }
 @media screen and (min-width: 600px) {
@@ -813,6 +845,12 @@
   .bottom-600-0 {
     margin-bottom: 0px;
   }
+  .hide-600 {
+    display: none;
+  }
+  .show-600 {
+    display: inline-block;
+  }
 }
 @media screen and (min-width: 700px) {
   .grid.gap-700-20 {
@@ -973,6 +1011,12 @@
   }
   .bottom-700-0 {
     margin-bottom: 0px;
+  }
+  .hide-700 {
+    display: none;
+  }
+  .show-700 {
+    display: inline-block;
   }
 }
 @media screen and (min-width: 800px) {
@@ -1135,6 +1179,12 @@
   .bottom-800-0 {
     margin-bottom: 0px;
   }
+  .hide-800 {
+    display: none;
+  }
+  .show-800 {
+    display: inline-block;
+  }
 }
 @media screen and (min-width: 900px) {
   .grid.gap-900-20 {
@@ -1296,6 +1346,12 @@
   .bottom-900-0 {
     margin-bottom: 0px;
   }
+  .hide-900 {
+    display: none;
+  }
+  .show-900 {
+    display: inline-block;
+  }
 }
 @media screen and (min-width: 1000px) {
   .grid.gap-1000-20 {
@@ -1456,5 +1512,11 @@
   }
   .bottom-1000-0 {
     margin-bottom: 0px;
+  }
+  .hide-1000 {
+    display: none;
+  }
+  .show-1000 {
+    display: inline-block;
   }
 }

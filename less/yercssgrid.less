@@ -1,7 +1,9 @@
 // YerCSSGrid
 
-// SETUP ( Version 1 ) {
+// SETUP ( Version 1.1 ) {
 
+    @col-default-font-size: 16px;
+    
     @grid-use-breackpoint-0: yes;
     @grid-use-breackpoints: yes;
     @grid-breackpoint-step: 100;
@@ -29,9 +31,11 @@
     @grid-top-bottom-min: 0;
     @grid-top-bottom-max: 30;
 
+    @grid-use-display: yes;
+
 // SETUP }
 
-// GENERATOR ( Version 1 ) {
+// GENERATOR ( Version 1.1 ) {
 
     .mix-grid-clear() {
 
@@ -50,10 +54,12 @@
     }
 
     .grid {
+        font-size: 0;
         > * {
             display: inline-block;
             width: 100%;
             vertical-align: top;
+            font-size: @col-default-font-size;
         }
         .mix-grid-clear();
     }
@@ -167,6 +173,14 @@
         }
         .loopSpace (@grid-top-bottom-min) {}
         .loopSpace (@grid-top-bottom-max);
+
+
+        .hide-@{breackpoint} when ( @grid-use-display = yes ) {
+            display: none;
+        }
+        .show-@{breackpoint} when ( @grid-use-display = yes ) {
+            display: inline-block;
+        }
     }
 
     .loopEachBreakpointBase() when ( @grid-use-breackpoint-0 = yes ) {
