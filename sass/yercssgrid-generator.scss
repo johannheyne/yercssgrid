@@ -37,8 +37,8 @@
                         }
                         .grid.gap-#{$breackpoint}-#{$i} {
                             > * {
-                                padding-left: (-$i / 2) * 1px;
-                                padding-right: (-$i / 2) * 1px;
+                                padding-left: ($i / 2) * 1px;
+                                padding-right: ($i / 2) * 1px;
                             }
                         }
 
