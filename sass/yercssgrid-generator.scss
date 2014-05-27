@@ -32,13 +32,13 @@
                     @while $i <= $grid-gap-max {
 
                         .grid.gap-#{$breackpoint}-#{$i} {
-                            margin-left: -$i / 2;
-                            margin-right: -$i / 2;
+                            margin-left: (-$i / 2) * 1px;
+                            margin-right: (-$i / 2) * 1px;
                         }
                         .grid.gap-#{$breackpoint}-#{$i} {
                             > * {
-                                padding-left: -$i / 2;
-                                padding-right: -$i / 2;
+                                padding-left: (-$i / 2) * 1px;
+                                padding-right: (-$i / 2) * 1px;
                             }
                         }
 
