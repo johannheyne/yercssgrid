@@ -177,3 +177,6 @@ time {
 .center {
     text-align: center;
 }
+#chapter {
+    overflow: hidden;
+}
